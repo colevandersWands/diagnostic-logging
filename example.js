@@ -17,11 +17,7 @@ function expansion(a, b, c, d, e, _log) {   const log = [];
   const step_3 = step_1 == step_2;          if(_log) log.push({op: 'step_1 == step_2', state: step_3});
   const step_4 = step_3 && e;               if(_log) log.push({op: 'step_3 && e', state: step_4});
 
-  if (_log) {
-    return {result: step_4, log};
-  } else {
-    return step_4;
-  }
+  return !log ? step_4                      : {result: step_4, log}
 };
 run_tests_diagnostic(expansion, test_cases)
 
